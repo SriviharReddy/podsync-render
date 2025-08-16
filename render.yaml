@@ -2,22 +2,20 @@ services:
   - type: web
     name: podsync
     env: docker
-    image: "ghcr.io/mxpv/podsync:latest"
+    docker:
+      image: ghcr.io/mxpv/podsync:latest
     plan: free
 
-    # Persistent storage for media + database
     disk:
       name: podsync-data
       mountPath: /app/data
       sizeGB: 1
 
-    # Environment variables
     envVars:
       - key: PORT
         value: "8080"
       - key: CONFIG_TOML
-        sync: false  # you’ll paste the config.toml content into Render’s dashboard
+        sync: false
 
-    # Start command: write config from env var to /app/config.toml and run Podsync
     startCommand: |
       echo "$CONFIG_TOML" > /app/config.toml && ./podsync --config /app/config.toml
