@@ -2,8 +2,7 @@ services:
   - type: web
     name: podsync
     env: docker
-    docker:
-      image: ghcr.io/mxpv/podsync:latest
+    image: ghcr.io/mxpv/podsync:latest
     plan: free
 
     disk:
