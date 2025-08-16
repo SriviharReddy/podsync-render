@@ -1,8 +1,8 @@
 services:
   - type: web
     runtime: image
-    image:
-      name: ghcr.io/mxpv/podsync
+    image:  # Changed to structured object
+      repository: ghcr.io/mxpv/podsync
       tag: latest
     name: podsync
     plan: free
